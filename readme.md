@@ -2,12 +2,14 @@
 
 > **Note:** This project is in the very early stages of development and IS NOT yet intended for public consumption. If you submit an issue, I do not guarantee a response. Please do not submit pull requests without first consulting me on Twitter ([@reinink](https://twitter.com/reinink)).
 
+> **Note:** This repository is a fork with some fixes to make the adapter work with webpack, if you use rollup, you might want to check Pedro Borge's [repo](https://github.com/pedroborges/inertia-svelte).
+
 ## Installation
 
 Install using NPM:
 
 ~~~sh
-npm install pedroborges/inertia-svelte --save
+npm install jphms/inertia-svelte --save
 ~~~
 
 ## Configure server-side framework
@@ -16,14 +18,17 @@ The first step when using Inertia.js is to configure your server-side framework.
 
 ## Setting up Webpack
 
+You'll need to setup the svelte-loader for webpack. You can do it manually following [these](https://github.com/sveltejs/svelte-loader) instructions, or just using [laravel-mix-svelte](https://github.com/wewowweb/laravel-mix-svelte#readme).
+
 Here is an example Webpack configuration that uses [Laravel Mix](https://github.com/JeffreyWay/laravel-mix). Note the `@` alias to the `/resources/js` directory.
 
 ~~~js
 const mix = require('laravel-mix')
 const path = require('path')
+require('laravel-mix-svelte')
 
 mix
-  .react('resources/js/app.js', 'public/js')
+  .js('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .webpackConfig({
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
@@ -32,7 +37,7 @@ mix
         '@': path.resolve('resources/js'),
       },
     },
-  })
+  }).svelte()
 ~~~
 
 ## Setup dynamic imports

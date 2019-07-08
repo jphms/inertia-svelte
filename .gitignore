@@ -1,6 +1,5 @@
 /node_modules
 .DS_Store
-index.js
-index.mjs
 package-lock.json
 yarn.lock
+/.idea

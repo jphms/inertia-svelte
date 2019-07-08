@@ -2,22 +2,14 @@
   "name": "inertia-svelte",
   "version": "0.1.0",
   "description": "The Svelte adapter for Inertia.js",
-  "author": "Pedro Borges",
+  "author": "João Magalhães",
   "license": "MIT",
-  "module": "index.mjs",
-  "main": "index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build"
-  },
+  "main": "src/index.js",
   "dependencies": {
     "inertia": "inertiajs/inertia"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
-    "rollup": "^1.13.1",
-    "rollup-plugin-svelte": "^5.0.3",
-    "svelte": "^3.4.4"
+    "eslint": "^5.15.3"
   },
   "keywords": [
     "svelte"
@@ -25,6 +17,6 @@
   "files": [
     "src",
     "index.mjs",
-    "index.js"
+    "src/index.js"
   ]
 }

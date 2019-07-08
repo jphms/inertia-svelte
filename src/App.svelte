@@ -1,5 +1,6 @@
 <script>
-  import { Inertia, page } from './index'
+  import Inertia from 'inertia'
+  import page from './page'
 
   export let initialPage,
     resolveComponent,
