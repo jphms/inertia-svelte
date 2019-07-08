@@ -25,19 +25,32 @@ Here is an example Webpack configuration that uses [Laravel Mix](https://github.
 ~~~js
 const mix = require('laravel-mix')
 const path = require('path')
-require('laravel-mix-svelte')
 
-mix
-  .js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .webpackConfig({
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
+    output: {chunkFilename: 'js/[name].js?id=[chunkhash]'},
     resolve: {
+      mainFields: ['svelte', 'browser', 'module', 'main'],
       alias: {
         '@': path.resolve('resources/js'),
       },
     },
-  }).svelte()
+    module: {
+      rules: [
+        {
+          test: /\.(html|svelte)$/,
+          use: {
+            loader: 'svelte-loader',
+            options: {
+              emitCss: true,
+              hotReload: true
+            }
+          }
+        }
+      ]
+    }
+  })
 ~~~
 
 ## Setup dynamic imports
